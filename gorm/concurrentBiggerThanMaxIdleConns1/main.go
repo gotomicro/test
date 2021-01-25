@@ -52,6 +52,7 @@ func main() {
 				elog.Int("OpenConnections", gormDB.DB().Stats().OpenConnections),       //  db.numOpen
 				elog.Int("InUse", gormDB.DB().Stats().InUse),                           // db.numOpen - len(db.freeConn)   len(db.freeConn)
 				elog.Int64("MaxIdleClosed", gormDB.DB().Stats().MaxIdleClosed),         // gormDB.DB().Stats().MaxIdleClosed
+				elog.Int64("WaitCount", gormDB.DB().Stats().WaitCount),                 // gormDB.DB().Stats().MaxIdleClosed
 			)
 			if gormDB.DB().Stats().InUse == 0 && gormDB.DB().Stats().MaxIdleClosed > 0 {
 				break
